@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "chinmayi c"
+version = "0.1.0"
+description = ""
+authors = ["Shapon Sheikh <shsheikhbd@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+fastapi = "^0.95.1"
+tortoise-orm = {extras = ["asyncmy"], version = "^0.19.3"}
+asyncmy = "^0.2.7"
+uvicorn = {extras = ["standard"], version = "^0.22.0"}
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
