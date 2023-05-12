@@ -6,6 +6,5 @@ v1 = APIRouter(prefix="/v1")
 
 
 @v1.get("/session")
-async def get_session():
-    session_id = await get_session_id()
-    return {"session_id": session_id}
+async def get_session() -> dict:
+    return await get_session_id()

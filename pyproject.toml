@@ -12,6 +12,7 @@ tortoise-orm = {extras = ["asyncmy"], version = "^0.19.3"}
 asyncmy = "^0.2.7"
 uvicorn = {extras = ["standard"], version = "^0.22.0"}
 httpx = "^0.24.0"
+cryptography = "^40.0.2"
 
 
 [build-system]
