@@ -1,8 +1,12 @@
+import json
 from hashlib import md5
 
-from httpx import AsyncClient, Timeout, get
+from httpx import AsyncClient, Timeout
+from faker import Faker
 
-import json
+from ..models.tortoise_models import DemoModel
+
+fake = Faker()
 
 # url = "https://suitecrmdemo.dtbc.eu/index.php?"
 url = "https://suitecrmdemo.dtbc.eu/service/v4/rest.php"
@@ -30,6 +34,11 @@ async def get_session_id() -> dict:
         async with AsyncClient() as client:
             response = await client.get(url, params=payload)
             response = json.loads(response.text)
+            # save in database
+            await DemoModel.create(
+                name=fake.name(),
+                description=fake.text()
+            )
             return response
     except Exception as e:
         print(f"Error: {e}")

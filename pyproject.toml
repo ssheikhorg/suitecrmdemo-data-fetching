@@ -13,6 +13,7 @@ asyncmy = "^0.2.7"
 uvicorn = {extras = ["standard"], version = "^0.22.0"}
 httpx = "^0.24.0"
 cryptography = "^40.0.2"
+faker = "^18.7.0"
 
 
 [build-system]
