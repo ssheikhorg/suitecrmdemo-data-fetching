@@ -1,6 +1,6 @@
 from hashlib import md5
 
-from httpx import AsyncClient, Timeout
+from httpx import AsyncClient, Timeout, get
 
 import json
 
@@ -8,7 +8,7 @@ url = "https://suitecrmdemo.dtbc.eu/index.php?"
 # url = "https://suitecrmdemo.dtbc.eu/service/v4/rest.php"
 
 
-def httpx_timeout(timeout: float = 60.0, connect: float = 60.0) -> Timeout:
+def httpx_timeout(timeout: float = 90.0, connect: float = 90.0) -> Timeout:
     return Timeout(timeout=timeout, connect=connect)
 
 
@@ -28,11 +28,11 @@ async def get_session_id() -> str:
     }
     try:
         async with AsyncClient(timeout=httpx_timeout()) as client:
-            response = await client.post(url, json=payload)
+            response = await client.get(url, params=payload)
             response = json.loads(response.text)
             session_id = response["id"]
 
         return session_id
     except Exception as e:
         print(f"Error: {e}")
-        raise e
+        return str(e)
